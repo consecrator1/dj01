@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block con %}
+
+    <h1><b>북마크생성</b></h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="text-end">
+            <input name="impo" type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+            <label class="btn btn-outline-warning" for="btn-check-outlined">✨</label><br>
+        </div>
+        <input type="text" name="sname" placeholder="사이트 이름을 입력하세요" class="form-control mt-3">
+        <input type="text" name="surl" placeholder="사이트 URL 을 입력하세요" class="form-control mt-4 mb-4">
+        <textarea class="form-control" name="scon" placeholder="사이트를 간략하게 설명해주세요" style="height: 100px;"></textarea>
+
+        <div class="text-end mt-5">
+            <button class="btn btn-dark">생성</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block con %}
+
+<div class="container mt-5 mb-5">
+    <h1><b>{{ user }}'s PROFILE</b></h1>
+
+    <div class="row">
+        <div class="col-sm-7 text-center" style="margin: auto;">
+            <img src="{{ user.getpic }}" class="rounded-circle" width="80%">
+        </div>
+        <div class="col-sm-5">
+
+            <label class="form-label mt-5">USERNAME</label>
+            <input type="text" value = "{{ user }}"disabled class="form-control">
+    
+            <label class="form-label mt-4">POINT</label>
+            <input type="text" value="{{user.point}}"disabled class="form-control">
+    
+            <label class="form-label mt-4">EMAIL</label>
+            <input type="text" value="{{user.email}}"disabled class="form-control">
+
+            <label class="form-label mt-4">COMMENT</label>
+            <textarea class="form-control" value="{{user.comment}}"disabled></textarea>
+        </div>
+    </div>
+
+    <div class="mt-5 text-end">
+        <a href="{% url 'acc:update' %}" class="btn btn-dark btn-lg">정보수정</a>
+        <!-- modal trigger button -->
+        <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            계정삭제
+        </button>
+    </div>
+    
+</div>
+
+<!-- Modal -->
+<form method ="post" action="{% url 'acc:delete' %}">
+    {% csrf_token %}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">계정 삭제 알림창</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">패스워드 확인</label>
+                    <input type="password" class="form-control" placeholder="INPUT PASSWORD">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button class="btn btn-danger">삭제</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
+

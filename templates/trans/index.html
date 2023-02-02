@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block con %}
+
+    <h1><b>SH TRANSLATOR</b></h1>
+    <form>
+        <div class="row mt-5">
+            <div class="col-sm-5">
+                <textarea class ="form-control" name="bf" style="height: 300px;" placeholder="번역할 문장을 입력해주세요">{{bf}}</textarea>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-select" name="fr">
+                    {% for code, name in ndict.items %}
+                        <option value="{{code}}" {% if fr == code %} selected {% endif %}>{{name|upper}}</option>
+                    {% endfor %}
+                </select>
+                <button class="btn btn-dark mt-4 mb-2" style="width:100%;">번역</button>
+                <a href="{% url 'trans:index' %}?bf={{af}}&fr={{to}}&to={{fr}}" class="btn btn-dark mt-2 mb-4" style="width:100%;">체인지</a>
+                <select class="form-select" name="to">
+                    {% for code, name in ndict.items %}
+                        <option value="{{code}}" {% if to == code %} selected {% endif %}>{{name|upper}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-sm-5">
+                <textarea class="form-control" style="height: 300px;" disabled>{{ af }}</textarea>
+            </div>
+        </div>
+    </form>
+{% endblock %}

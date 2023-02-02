@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block con %}
+
+<h1>CHANGE PASSWORD</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <input type ="password" name = "cpass" placeholder="INPUT CURRENT PASSWORD"><br><br>
+    <input type ="password" name = "npass" placeholder="INPUT NEW PASSWORD"><br><br>
+    <button>CHANGE</button>
+</form>
+
+{% endblock %}

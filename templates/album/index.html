@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block con %}
+
+    <h1><b>사진첩</b></h1>
+    <head>
+        <style>
+            div.pic {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 180px;
+            }
+
+            div.pic:hover {
+            border: 1px solid #777;
+            }
+
+            div.pic img {
+            width: 100%;
+            height: auto;
+            }
+
+            div.desc {
+            padding: 15px;
+            text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+
+   
+    <div class="row">
+        {% for i in aset %}
+            <div class="col-sm-4">
+                <div class="card text-center">
+                <a target="_blank" href="{{ i.getpic }}" download>
+                    <img src="{{ i.getpic }}" class="card-img-top" width="400px" height="300px">
+                </a>
+                    <b><div class ="desc text-center">{{ i.subject }}</div></b>
+                </div>
+            </div>
+        {% endfor %}  
+    </div>
+    
+    </body>
+
+{% endblock %}
+
